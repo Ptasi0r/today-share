@@ -9,18 +9,21 @@ body {
 }
 
 .site-header {
-  display: flex;
-  padding: 55px 0 0 55px;
-  justify-content: flex-start;
-  align-items: center;
+  a {
+    display: flex;
+    padding: 55px 0 0 55px;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    h1 {
+      font-size: 21px;
+      font-weight: normal;
+      margin-left: 10px;
 
-  h1 {
-    font-size: 21px;
-    font-weight: normal;
-    margin-left: 10px;
-
-    span {
-      font-weight: 600;
+      span {
+        font-weight: 600;
+      }
     }
   }
 }
@@ -121,6 +124,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 
 .path-bottom {

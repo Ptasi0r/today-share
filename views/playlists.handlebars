@@ -1,0 +1,23 @@
+<h1>Cześć {{name}}</h1>
+
+<img src="{{avatar}}" alt="">
+
+
+<input type="hidden" name="refresh_token" value="{{refresh_token}}">
+<ul>
+  {{#each playlists}}
+  <li>
+    Name: {{this.name}}
+    <a
+      href="/song?token_type={{../token_type}}&access_token={{../access_token}}&expire_date={{../expire_date}}&refresh_token={{../refresh_token}}&playlist_id={{this.id}}">link
+    </a>
+  </li>
+
+  {{/each}}
+
+</ul>
+
+<script>
+
+
+</script>
