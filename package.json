@@ -1,0 +1,27 @@
+{
+  "name": "today-share",
+  "version": "1.0.0",
+  "description": "app to share random track from user's Spotify playlist",
+  "main": "index.js",
+  "scripts": {
+    "start": "note index",
+    "dev": "nodemon index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ptasi0r/today-share.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ptasi0r/today-share/issues"
+  },
+  "homepage": "https://github.com/Ptasi0r/today-share#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.4"
+  }
+}
