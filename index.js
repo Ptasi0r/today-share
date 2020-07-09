@@ -1,18 +1,30 @@
 const express = require('express');
 const querystring = require('querystring');
 const fetch = require('node-fetch');
+const exphbs = require('express-handlebars');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_ID_SECRET = process.env.CLIENT_ID_SECRET;
 const PORT = process.env.PORT || 5000;
+const publicPath = path.join(__dirname, '../../public');
 
 const redirect_url = process.env.REDIRECT_URI || `http://localhost:${PORT}/main`;
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
 app.listen(PORT, () => {
   console.log(`🎉 Server is running at port: ${PORT}`);
 });
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/login', (req, res) => {
   res.redirect(
@@ -58,6 +70,9 @@ app.get('/main', async (req, res) => {
 
     console.log(profile_data);
     console.log(`Cześć ${profile_data['display_name']}`);
+    res.render('playlist', {
+      name: profile_data['display_name'],
+    });
     //TODO: 1. Pobrać playlisty
     //TODO 2. Wyrenderować informację na stronie + nazwa użytkownika i jego zdjęcie
     //TODO 3. Sprawdzanie statusu w przypadku błędu informacja
@@ -66,5 +81,3 @@ app.get('/main', async (req, res) => {
     // TODO: przenieś na stonę o błedzie
   }
 });
-
-app.use(express.static('public'));

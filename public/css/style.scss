@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.site-header {
+  display: flex;
+  padding: 55px 0 0 55px;
+  justify-content: flex-start;
+  align-items: center;
+
+  h1 {
+    font-size: 21px;
+    font-weight: normal;
+    margin-left: 10px;
+
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+.site-main {
+  display: grid;
+  margin: 0 auto;
+  width: calc(500px + 800px);
+  column-gap: 150px;
+  grid-template-columns: 500px 800px;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    font-size: 31px;
+    margin: 40px 0;
+  }
+
+  a {
+    img {
+      width: 40px;
+      margin-right: 20px;
+    }
+    background-color: #191414;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 50px;
+    border-radius: 30px;
+    width: fit-content;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+.progressbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    color: black;
+    display: block;
+    background-color: #c4c4c4;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 20px;
+    margin-right: 20px;
+    position: relative;
+    user-select: none;
+    &:first-of-type,
+    &:nth-of-type(2) {
+      &::after {
+        content: '';
+        position: absolute;
+        right: -23px;
+        width: 25px;
+        height: 10px;
+        top: 10px;
+        z-index: -1;
+        background-color: #c4c4c4;
+      }
+    }
+    &.active {
+      font-weight: 600;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-size: 28px;
+    margin: 35px 0;
+  }
+  font-size: 22px;
+  text-align: center;
+}
+
+.path-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.path-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.site-footer {
+  position: absolute;
+  bottom: 15px;
+  left: 180px;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #939393;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+}

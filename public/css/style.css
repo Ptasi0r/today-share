@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.site-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 55px 0 0 55px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.site-header h1 {
+  font-size: 21px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+
+.site-header h1 span {
+  font-weight: 600;
+}
+
+.site-main {
+  display: -ms-grid;
+  display: grid;
+  margin: 0 auto;
+  width: calc(500px + 800px);
+  -webkit-column-gap: 150px;
+          column-gap: 150px;
+  -ms-grid-columns: 500px 800px;
+      grid-template-columns: 500px 800px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-form h2 {
+  font-size: 31px;
+  margin: 40px 0;
+}
+
+.login-form a {
+  background-color: #191414;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 7px 50px;
+  border-radius: 30px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.login-form a img {
+  width: 40px;
+  margin-right: 20px;
+}
+
+.progressbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.progressbar span {
+  color: black;
+  display: block;
+  background-color: #c4c4c4;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 20px;
+  margin-right: 20px;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.progressbar span:first-of-type::after, .progressbar span:nth-of-type(2)::after {
+  content: '';
+  position: absolute;
+  right: -23px;
+  width: 25px;
+  height: 10px;
+  top: 10px;
+  z-index: -1;
+  background-color: #c4c4c4;
+}
+
+.progressbar span.active {
+  font-weight: 600;
+}
+
+.progressbar span:last-of-type {
+  margin-right: 0;
+}
+
+.photo-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 22px;
+  text-align: center;
+}
+
+.photo-section h2 {
+  font-size: 28px;
+  margin: 35px 0;
+}
+
+.path-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.path-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.site-footer {
+  position: absolute;
+  bottom: 15px;
+  left: 180px;
+}
+
+.site-footer a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #939393;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.site-footer a img {
+  margin-right: 10px;
+}
+/*# sourceMappingURL=style.css.map */
