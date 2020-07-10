@@ -9,9 +9,10 @@
       <span>2</span>
       <span class="active">3</span>
     </div>
-    <h2>Share a song</h2>
+    <h2>Today random song is...</h2>
   </header>
-  <canvas id="canvas" width="720px" height="1200px "> {{!-- <div class="song-card">
+
+  <div class="song-card">
     <img src="{{song.image}}" alt="{{song.name}}" class="song-img">
     <h4> {{song.artists}}</h4>
     <h3>{{song.name}}</h3>
@@ -19,17 +20,75 @@
       <img src="img/logo.png" alt="TodayShare logo" />
       <h5 class="site-title">Today <br /><span>Share</span></h5>
     </span>
-  </div></canvas>
-  --}}
-    <script src="/rasterizeHTML.allinone.js"></script>
-    <script>
-      var canvas = document.getElementById("canvas"),
-        html = '<style>*{font-family: "Montserrat", sans-serif;}.song-card {background-color: black;width: 600px;color: white;padding-top:5px;text-align: center}.song-card > img {width: 540px;display: block;margin: 15px auto;}.song-card h4 {font-size: 32px;font-weight: normal;}.song-card h3 {font-size: 42px;}.song-img {width: 270px;}.logo {display: flex;justify-content: flex-start;align-items: center;flex-direction: row;text-decoration: none;color: white;width: -webkit-fit-content;width: -moz-fit-content;width: fit-content;margin: 0 auto;}.logo img {height: 58px;width: 58 px;}.logo h5 {font-size: 22px;font-weight: normal;margin-left: 10px;}.logo h5 span {font-weight: 600;}</style><div class="song-card"><img src = "{{song.image}}" alt = "{{song.name}}" class="song-img" > <h4> {{ song.artists }}</h4><h3>{{ song.name }}</h3><span class="logo"><img src="img/logo.png" alt="TodayShare logo" /><h5 class="site-title">Today <br /><span>Share</span></h5></span></div > ';
+  </div>
 
+
+
+  <div class="song-card-big">
+    <h4> {{song.artists}}</h4>
+    <h3>{{song.name}}</h3>
+    <span class="logo">
+      <img src="img/logo.png" alt="TodayShare logo" />
+      <h5 class="site-title">Today <br /><span>Share</span></h5>
+    </span>
+  </div>
+
+  <canvas id="canvas" width="610px" style="display: none;"> </canvas>
+
+
+  <section class="share-section">
+    <button class="save-canvas"><img src="img/save.png" alt="save icon">Download Photo</button>
+    <span class="or">Or</span>
+    <div class="link-container">
+      <span class="text-to-copy">{{song.href}}</span>
+      <span class="save-link">COPY</span>
+    </div>
+    <a onclick="window.location.reload()" class="reload-link">
+      <img src="img/reload.png" alt="reload icon">
+      Change song</a>
+  </section>
+
+
+  <script src="/rasterizeHTML.allinone.js"></script>
+  <script src="/FileSaver.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      let canvas = document.getElementById("canvas"),
+        html = '<style>*{font-family: "Helvetica", sans-serif;}.song-card {background-color: black;border-radius: 5px;width: 600px;  color: white;padding-top:15px;text-align: center}.song-card > img {width: 540px;display: block;margin: 15px auto;}.song-card h4 {padding: 0 10px;font-size: 32px;font-weight: normal;margin-top:60px}.song-card h3 {font-size: 48px;margin: -30px 10px 20px 10px}.song-img {width: 270px; border-radius: 5px;}.logo {display: flex;justify-content: flex-start;align-items: center;flex-direction: row;text-decoration: none;color: white;width: -webkit-fit-content;width: -moz-fit-content;width: fit-content;margin: 0 auto;}.logo img {height: 58px;width: 58 px;}.logo h5 {font-size: 22px;font-weight: normal;margin-left: 10px;}.logo h5 span {font-weight: 600;}</style><div class="song-card"><img src = "{{song.image}}" alt = "{{song.name}}" class="song-img" > <h4> {{ song.artists }}</h4><h3>{{ song.name }}</h3><span class="logo"><img src="img/logo.png" alt="TodayShare logo" /><h5 class="site-title">Today <br /><span>Share</span></h5></span></div > ';
+      const bigCard = document.querySelector(".song-card-big")
+      canvas.height = bigCard.offsetHeight + 590;
+      if (bigCard.offsetHeight > 500) {
+        canvas.height = bigCard.offsetHeight + 590 - 50;
+      }
       rasterizeHTML.drawHTML(html, canvas);
-    </script>
-    <span>Name: {{song.name}} {{song.href}}</span>
+      bigCard.style.display = "none"
 
-    <a onclick="window.location.reload()">reload</a>
+    })
+    const saveBtn = document.querySelector('.save-canvas');
+    const imageName = "{{song.name}}_by_{{song.artists}}"
+    saveBtn.addEventListener("click", () => {
+      const img_name = imageName.replace(/\s+/g, '-').replace(",", "").toLowerCase()
+      var canvas = document.getElementById("canvas");
+      canvas.toBlob(function (blob) {
+        saveAs(blob, `${img_name}.png`);
+      });
+    })
 
+    const copyToClipboard = str => {
+      const el = document.createElement('textarea');
+      el.value = str;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+    };
+
+
+    const copyBtn = document.querySelector(".save-link")
+    copyBtn.addEventListener('click', () => {
+      const copyText = document.querySelector(".text-to-copy");
+      copyToClipboard(copyText.textContent)
+    })
+
+  </script>
 </main>

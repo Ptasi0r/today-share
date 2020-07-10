@@ -21,6 +21,10 @@ app.get('/rasterizeHTML.allinone.js', function (req, res) {
   res.sendFile(__dirname + '/node_modules/rasterizehtml/dist/rasterizeHTML.allinone.js');
 });
 
+app.get('/FileSaver.js', function (req, res) {
+  res.sendFile(__dirname + '/node_modules/file-saver/dist/FileSaver.js');
+});
+
 const token_refresh = async (token_to_refresh) => {
   if (refresh_token == null) {
     res.render('error', {
