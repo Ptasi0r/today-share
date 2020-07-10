@@ -587,6 +587,7 @@ body {
   body {
     width: 100vw;
     overflow-x: hidden;
+    text-align: center;
   }
   .site-header a {
     display: -webkit-box;
@@ -764,6 +765,7 @@ body {
   body {
     width: 100vw;
     overflow-x: hidden;
+    text-align: center;
   }
   .site-header a {
     display: -webkit-box;
@@ -942,6 +944,7 @@ body {
   body {
     width: 100vw;
     overflow-x: hidden;
+    text-align: center;
   }
   .site-header a {
     display: -webkit-box;
