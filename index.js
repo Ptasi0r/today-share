@@ -12,7 +12,7 @@ const CLIENT_ID_SECRET = process.env.CLIENT_ID_SECRET;
 const PORT = process.env.PORT || 5000;
 const publicPath = path.join(__dirname, '../../public');
 
-const redirect_url = process.env.REDIRECT_URI || `http://localhost:${PORT}/main`;
+const redirect_url = process.env.URL_HEROKU || `http://localhost:${PORT}/main`;
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
