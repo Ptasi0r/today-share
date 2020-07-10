@@ -4,7 +4,7 @@
   "description": "app to share random track from user's Spotify playlist",
   "main": "index.js",
   "scripts": {
-    "start": "note index",
+    "start": "note index.js",
     "dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
