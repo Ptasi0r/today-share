@@ -1,1 +1,18 @@
-{{msg}}
+<style>
+  .error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .error-container img {
+    height: 400px;
+    margin-bottom: 30px;
+  }
+</style>
+
+<div class="error-container">
+  <img src="img/error.svg" alt="Error image from undraw">
+  <h1>{{msg}}</h1>
+</div>

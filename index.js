@@ -63,6 +63,12 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/error', (req, res) => {
+  res.render('error', {
+    msg: 'Error, try log in again',
+  });
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/logo.png', express.static(path.join(__dirname, 'public/img/logo.png')));
 
