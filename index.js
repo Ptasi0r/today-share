@@ -17,6 +17,10 @@ const redirect_url = process.env.REDIRECT_URI || `http://localhost:${PORT}/main`
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+app.get('/rasterizeHTML.allinone.js', function (req, res) {
+  res.sendFile(__dirname + '/node_modules/rasterizehtml/dist/rasterizeHTML.allinone.js');
+});
+
 const token_refresh = async (token_to_refresh) => {
   if (refresh_token == null) {
     res.render('error', {
@@ -112,8 +116,6 @@ app.get('/main', async (req, res) => {
         })
       );
     }
-
-    //TODO 2. Wyrenderować informację na stronie + nazwa użytkownika i jego zdjęcie
   } else {
     res.render('error', {
       msg: 'Error, try log in again',
@@ -165,8 +167,17 @@ app.get('/playlists', async (req, res) => {
       id: el['id'],
     };
   });
+  playlists_data.sort((a, b) => {
+    if (a['tracks'] > b['tracks']) {
+      return -1;
+    } else if (a['tracks'] < b['tracks']) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  console.log(playlists_data[0]['tracks'], playlists_data[1]['tracks'], playlists_data[0]['tracks'] > playlists_data[1]['tracks']);
 
-  console.log(access_token);
   res.render('playlists', {
     name: profile_data['display_name'],
     avatar: profile_data['images'][0]['url'],
@@ -179,10 +190,10 @@ app.get('/playlists', async (req, res) => {
 });
 
 app.get('/song', async (req, res) => {
-  let { token_type, access_token, expire_date, refresh_token, playlist_id } = req.query;
+  let { token_type, access_token, expire_date, refresh_token, playlist_id, user, avatar } = req.query;
 
   const now = new Date().getTime();
-  console.log(now, expire_date);
+  // console.log(now, expire_date);
   if (now >= expire_date) {
     return_values = await token_refresh(refresh_token);
     access_token = return_values[0];
@@ -215,24 +226,44 @@ app.get('/song', async (req, res) => {
       playlists_tracks.push(el);
     });
   }
-  console.log(playlists_tracks.length);
+  // console.log(playlists_tracks.length);
   // console.log(playlists_tracks[0]);
   const song = playlists_tracks[Math.floor(Math.random() * playlists_tracks.length)]['track'];
   console.log(song['artists']);
   console.log(song['album']['images']);
+  artists = [];
+
+  song['artists'].forEach((el) => {
+    artists.push(el.name);
+  });
+
   const song_map = {
     name: song['name'],
     album: song['album']['name'],
-    artists: song['album']['artists'],
+    artists: artists.join(', '),
     id: song['album']['id'],
     image: song['album']['images'][1]['url'],
     href: song['external_urls']['spotify'],
   };
+
+  const PROFILE_URL = 'https://api.spotify.com/v1/me';
+  const res_profile = await fetch(PROFILE_URL, {
+    method: 'GET',
+    headers: {
+      Authorization: `${token_type} ${access_token}`,
+    },
+  });
+
+  const profile_data = await res_profile.json();
+
+  console.log(user, avatar);
   res.render('song', {
     token_type: token_type,
     access_token: access_token,
     expire_date: expire_date,
     refresh_token: refresh_token || null,
     song: song_map,
+    name: profile_data['display_name'],
+    avatar: profile_data['images'][0]['url'],
   });
 });

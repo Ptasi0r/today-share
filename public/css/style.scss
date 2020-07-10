@@ -3,7 +3,8 @@
 body {
   margin: 0;
   width: 100vw;
-  height: 100vh;
+  max-width: 100vw;
+  min-height: 100vh;
   position: relative;
   font-family: 'Montserrat', sans-serif;
 }
@@ -64,6 +65,12 @@ body {
     font-weight: 500;
     text-decoration: none;
     text-transform: uppercase;
+  }
+}
+
+.progress-header {
+  h2 {
+    font-size: 31px;
   }
 }
 
@@ -129,8 +136,137 @@ body {
 
 .path-bottom {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
+}
+
+.site-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-header {
+  position: absolute;
+  top: 45px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 60px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+  }
+  h2 {
+    font-size: 21px;
+    span {
+      font-weight: normal;
+    }
+  }
+}
+
+.playlists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: calc(280px * 5);
+}
+
+.playlist_a {
+  color: black;
+  text-decoration: none;
+}
+
+.playlist {
+  position: relative;
+  width: 240px;
+  height: 330px;
+  margin: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow ease-in-out 0.2s;
+  background: #eeeeee;
+  border-radius: 5px;
+
+  &:hover {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+  }
+
+  img {
+    width: 220px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  h3 {
+    position: absolute;
+    width: inherit;
+    font-size: 18px;
+    text-align: center;
+    padding: 0 5px;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+}
+
+.tracks {
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+  font-size: 80px;
+  color: #dddddd;
+  font-weight: 600;
+}
+
+.song-card {
+  background-color: black;
+  width: 300px;
+  color: white;
+  text-align: center;
+  & > img {
+    width: 270px;
+    display: block;
+    margin: 15px auto;
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  h3 {
+    font-size: 21px;
+  }
+}
+
+.song-img {
+  width: 270px;
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  text-decoration: none;
+  color: white;
+  width: fit-content;
+  margin: 0 auto;
+  img {
+    height: 28px;
+    width: 28px;
+  }
+  h5 {
+    font-size: 11px;
+    font-weight: normal;
+    margin-left: 10px;
+
+    span {
+      font-weight: 600;
+    }
+  }
 }
 
 .site-footer {

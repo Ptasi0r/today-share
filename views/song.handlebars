@@ -1,8 +1,35 @@
-Song
+<main class="site-main-container">
+  <header class="user-header">
+    <img src="{{avatar}}" alt="">
+    <h2><span>👋Hello</span> <br>{{name}}</h2>
+  </header>
+  <header class="progress-header">
+    <div class="progressbar">
+      <span>1</span>
+      <span>2</span>
+      <span class="active">3</span>
+    </div>
+    <h2>Share a song</h2>
+  </header>
+  <canvas id="canvas" width="720px" height="1200px "> {{!-- <div class="song-card">
+    <img src="{{song.image}}" alt="{{song.name}}" class="song-img">
+    <h4> {{song.artists}}</h4>
+    <h3>{{song.name}}</h3>
+    <span class="logo">
+      <img src="img/logo.png" alt="TodayShare logo" />
+      <h5 class="site-title">Today <br /><span>Share</span></h5>
+    </span>
+  </div></canvas>
+  --}}
+    <script src="/rasterizeHTML.allinone.js"></script>
+    <script>
+      var canvas = document.getElementById("canvas"),
+        html = '<style>*{font-family: "Montserrat", sans-serif;}.song-card {background-color: black;width: 600px;color: white;padding-top:5px;text-align: center}.song-card > img {width: 540px;display: block;margin: 15px auto;}.song-card h4 {font-size: 32px;font-weight: normal;}.song-card h3 {font-size: 42px;}.song-img {width: 270px;}.logo {display: flex;justify-content: flex-start;align-items: center;flex-direction: row;text-decoration: none;color: white;width: -webkit-fit-content;width: -moz-fit-content;width: fit-content;margin: 0 auto;}.logo img {height: 58px;width: 58 px;}.logo h5 {font-size: 22px;font-weight: normal;margin-left: 10px;}.logo h5 span {font-weight: 600;}</style><div class="song-card"><img src = "{{song.image}}" alt = "{{song.name}}" class="song-img" > <h4> {{ song.artists }}</h4><h3>{{ song.name }}</h3><span class="logo"><img src="img/logo.png" alt="TodayShare logo" /><h5 class="site-title">Today <br /><span>Share</span></h5></span></div > ';
 
+      rasterizeHTML.drawHTML(html, canvas);
+    </script>
+    <span>Name: {{song.name}} {{song.href}}</span>
 
-<span>Name: {{song.name}} {{song.href}}</span>
-<img src="{{song.image}}" alt="">
+    <a onclick="window.location.reload()">reload</a>
 
-
-<a onclick="window.location.reload()">reload</a>
+</main>
